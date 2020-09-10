@@ -403,9 +403,9 @@
               <FilePath>.\startup_MSP432xx_md.s</FilePath>
             </File>
             <File>
-              <FileName>SImple_Addition.s</FileName>
+              <FileName>ADD TWO 96 BITS.asm</FileName>
               <FileType>2</FileType>
-              <FilePath>.\SImple_Addition.s</FilePath>
+              <FilePath>.\ADD TWO 96 BITS.asm</FilePath>
             </File>
           </Files>
         </Group>

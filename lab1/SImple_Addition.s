@@ -6,9 +6,11 @@
 				
 __main			PROC
 				
-				MOV	    R1, #4
-				MOV     R2, #7
-				ADD     R3, R2, R1
+				MOV	    r0, #0xFFFFFFFF
+				MOV     r1, #0x03
+				ADDS    r2,r0,r1
+				
+				
 			
 
 				ENDP

@@ -16747,25 +16747,44 @@ CODE, READONLY
     6 00000000         
     7 00000000         __main  PROC
     8 00000000         
-    9 00000000 F04F 30FF       MOV              r0, #0xFFFFFFFF
-   10 00000004 F04F 0103       MOV              r1, #0x03
-   11 00000008 1842            ADDS             r2,r0,r1
-   12 0000000A         
-   13 0000000A         
-   14 0000000A         
-   15 0000000A         
-   16 0000000A                 ENDP
-   17 0000000A         
-   18 0000000A 00 00           ALIGN
-   19 0000000C                 AREA             allocations, DATA, READWRITE
-   20 00000000                 END
+    9 00000000 F04F 31FF       MOV              R1, #0xFFFFFFFF
+   10 00000004 4A05            LDR              R2,= 0x12345678
+   11 00000006 4B06            LDR              R3,= 0x34567891
+   12 00000008         
+   13 00000008 4C06            LDR              R4,= 0x67154827
+   14 0000000A F04F 3512       MOV              R5, #0x12121212
+   15 0000000E 4E06            LDR              R6,= 0x24680246
+   16 00000010         
+   17 00000010         
+   18 00000010         
+   19 00000010 190F            ADDS             R7, R1, R4
+   20 00000012 EB42 0805       ADC              R8, R2, R5
+   21 00000016 EB43 0906       ADC              R9, R3,R6
+   22 0000001A         ;96 BIT NO. (R9,R8,R7)-(MSB,MID BIT,LSB)
+   23 0000001A         
+   24 0000001A         
+   25 0000001A                 ENDP
+   26 0000001A         
+   27 0000001A 00 00           ALIGN
+   28 0000001C 12345678 
+              34567891 
+
+
+
+ARM Macro Assembler    Page 259 
+
+
+              67154827 
+              24680246         AREA             allocations, DATA, READWRITE
+   29 00000000                 END
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
-erwork --depend=.\objects\simple_addition.d -o.\objects\simple_addition.o -I.\R
-TE\_Target_1 -I"C:\Users\ANIL PACHOLI\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\C
-MSIS\Core\Include" -I"C:\Users\ANIL PACHOLI\AppData\Local\Arm\Packs\TexasInstru
-ments\MSP432P4xx_DFP\3.2.6\Device\Include" --predefine="__EVAL SETA 1" --predef
-ine="__UVISION_VERSION SETA 528" --predefine="_RTE_ SETA 1" --predefine="__MSP4
-32P401R__ SETA 1" --list=.\listings\simple_addition.lst SImple_Addition.s
+erwork --depend=".\objects\add two 96 bits.d" -o".\objects\add two 96 bits.o" -
+I.\RTE\_Target_1 -I"C:\Users\ANIL PACHOLI\AppData\Local\Arm\Packs\ARM\CMSIS\5.5
+.1\CMSIS\Core\Include" -I"C:\Users\ANIL PACHOLI\AppData\Local\Arm\Packs\TexasIn
+struments\MSP432P4xx_DFP\3.2.6\Device\Include" --predefine="__EVAL SETA 1" --pr
+edefine="__UVISION_VERSION SETA 528" --predefine="_RTE_ SETA 1" --predefine="__
+MSP432P401R__ SETA 1" --list=.\listings\add two 96 bits.lst "ADD TWO 96 BITS.as
+m"
 
 
 
@@ -16806,15 +16825,15 @@ __main 00000000
 
 Symbol: __main
    Definitions
-      At line 7 in file SImple_Addition.s
+      At line 7 in file ADD
    Uses
-      At line 4 in file SImple_Addition.s
+      At line 4 in file ADD
 Comment: __main used once
 main 00000000
 
 Symbol: main
    Definitions
-      At line 3 in file SImple_Addition.s
+      At line 3 in file ADD
    Uses
       None
 Comment: main unused
@@ -16829,7 +16848,7 @@ allocations 00000000
 
 Symbol: allocations
    Definitions
-      At line 19 in file SImple_Addition.s
+      At line 28 in file ADD
    Uses
       None
 Comment: allocations unused
@@ -49109,4 +49128,4 @@ Symbol: __Vendor_SysTickConfig
       None
 Comment: __Vendor_SysTickConfig unused
 3656 symbols
-3996 symbols in table
+3998 symbols in table
